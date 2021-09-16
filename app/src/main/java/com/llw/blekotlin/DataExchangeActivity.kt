@@ -58,6 +58,7 @@ class DataExchangeActivity : AppCompatActivity(), BleCallback.UiCallback {
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show()
     }
 
+
     //页面返回
     override fun onOptionsItemSelected(item: MenuItem): Boolean =
         if (item.itemId == android.R.id.home)  { onBackPressed();true } else false
