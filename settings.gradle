@@ -1,0 +1,2 @@
+rootProject.name = "BleDemo-Kotlin"
+include ':app'
