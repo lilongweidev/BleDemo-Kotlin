@@ -7,25 +7,35 @@
     android:gravity="bottom"
     android:orientation="vertical"
     android:paddingBottom="20dp"
-    tools:context=".DataExchangeActivity">
-    <TextView
-        android:id="@+id/tv_state"
-        android:gravity="center"
+    tools:context=".ui.DataExchangeActivity">
+
+    <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center" />
+    </ScrollView>
+
     <EditText
         android:id="@+id/et_command"
-        android:hint="请输入指令"
         android:layout_width="match_parent"
-        android:layout_height="60dp"/>
+        android:layout_height="60dp"
+        android:text="fcfd040101000005"
+        android:hint="请输入指令" />
+
     <Button
         android:id="@+id/btn_send_command"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_marginTop="10dp"
-        android:text="发送指令"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:text="发送指令" />
 
 </LinearLayout>

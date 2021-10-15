@@ -1,4 +1,4 @@
-package com.llw.blekotlin
+package com.llw.blekotlin.bean
 
 import android.bluetooth.BluetoothDevice
 

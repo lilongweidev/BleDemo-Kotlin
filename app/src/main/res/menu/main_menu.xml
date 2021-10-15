@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/item_scan_filter"
+        android:title="扫描过滤"
+        app:showAsAction="ifRoom"
+        android:icon="@mipmap/ic_scan_filter"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/item_service_characteristics"
+        android:title="服务特性"
+        app:showAsAction="never"
+        tools:ignore="HardcodedText" />
+</menu>

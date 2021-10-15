@@ -38,7 +38,7 @@ object BleHelper {
      * @param command 指令
      * @param isResponse 是否响应
      */
-    fun sendCommand(gatt: BluetoothGatt, command: String, isResponse: Boolean): Boolean =
+    fun sendCommand(gatt: BluetoothGatt, command: String, isResponse: Boolean = true): Boolean =
         gatt.writeCharacteristic(gatt.getService(UUID.fromString(BleConstant.SERVICE_UUID))
             .getCharacteristic(UUID.fromString(BleConstant.CHARACTERISTIC_WRITE_UUID)).apply {
             writeType = if (isResponse) WRITE_TYPE_DEFAULT else WRITE_TYPE_NO_RESPONSE

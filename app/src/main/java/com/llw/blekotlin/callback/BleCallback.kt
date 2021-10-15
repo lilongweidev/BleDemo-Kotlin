@@ -58,7 +58,7 @@ class BleCallback : BluetoothGattCallback() {
     override fun onServicesDiscovered(gatt: BluetoothGatt, status: Int) {
         uiCallback.state(if (!BleHelper.enableIndicateNotification(gatt)) { gatt.disconnect()
             "开启通知属性异常"
-        } else "发现了服务")
+        } else "发现了服务 code: $status")
     }
 
     /**
@@ -66,7 +66,7 @@ class BleCallback : BluetoothGattCallback() {
      */
     override fun onCharacteristicChanged(gatt: BluetoothGatt, characteristic: BluetoothGattCharacteristic) {
         val content = ByteUtils.bytesToHexString(characteristic.value)
-        uiCallback.state("特性改变: 收到内容：$content")
+        uiCallback.state("收到：$content")
     }
 
     /**
@@ -74,7 +74,7 @@ class BleCallback : BluetoothGattCallback() {
      */
     override fun onCharacteristicWrite(gatt: BluetoothGatt, characteristic: BluetoothGattCharacteristic, status: Int) {
         val command = ByteUtils.bytesToHexString(characteristic.value)
-        uiCallback.state("特性写入: ${if (status == BluetoothGatt.GATT_SUCCESS) "写入成功：" else "写入失败："}$command")
+        uiCallback.state("发出: ${if (status == BluetoothGatt.GATT_SUCCESS) "成功：" else "失败："}$command code: $status")
     }
 
     /**

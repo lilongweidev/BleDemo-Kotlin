@@ -1,14 +1,16 @@
-package com.llw.blekotlin
+package com.llw.blekotlin.ui
 
 import android.bluetooth.BluetoothDevice
 import android.bluetooth.BluetoothGatt
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View.FOCUS_DOWN
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.llw.blekotlin.callback.BleCallback
 import com.llw.blekotlin.databinding.ActivityDataExchangeBinding
 import com.llw.blekotlin.utils.BleHelper
+import com.llw.blekotlin.utils.ByteUtils.getBCCResult
 
 class DataExchangeActivity : AppCompatActivity(), BleCallback.UiCallback {
 
@@ -42,13 +44,14 @@ class DataExchangeActivity : AppCompatActivity(), BleCallback.UiCallback {
         gatt = device!!.connectGatt(this, false, bleCallback)
         //发送指令
         binding.btnSendCommand.setOnClickListener {
-            val command = binding.etCommand.text.toString().trim()
+            var command = binding.etCommand.text.toString().trim()
             if (command.isEmpty()) {
                 showMsg("请输入指令")
                 return@setOnClickListener
             }
+            command += getBCCResult(command)
             //发送指令
-            BleHelper.sendCommand(gatt, command, "010200" == command)
+            BleHelper.sendCommand(gatt, command)
         }
         //Ble状态页面UI回调
         bleCallback.setUiCallback(this)
@@ -66,6 +69,7 @@ class DataExchangeActivity : AppCompatActivity(), BleCallback.UiCallback {
     override fun state(state: String) = runOnUiThread {
         stringBuffer.append(state).append("\n")
         binding.tvState.text = stringBuffer.toString()
+        binding.scroll.apply { viewTreeObserver.addOnGlobalLayoutListener { post { fullScroll(FOCUS_DOWN) } } }
     }
 
 

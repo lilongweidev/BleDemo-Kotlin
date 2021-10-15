@@ -1,7 +1,7 @@
 package com.llw.blekotlin.adapter
 
 import android.annotation.SuppressLint
-import com.llw.blekotlin.BleDevice
+import com.llw.blekotlin.bean.BleDevice
 import com.llw.blekotlin.databinding.ItemBluetoothBinding
 
 /**
